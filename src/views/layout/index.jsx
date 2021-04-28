@@ -16,7 +16,7 @@ import menus from "./menus";
 import "./index.scss";
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
-function App() {
+function App(props) {
   const [collapsed, setCollapsed] = useState(false);
   function toggle() {
     let a = !collapsed;
@@ -30,7 +30,7 @@ function App() {
   function onTap(item) {}
   return (
     <Layout className="height100 layout">
-      <Sider trigger={null} collapsible collapsed={collapsed}>
+      <Sider collapsedWidth="60" trigger={null} collapsible collapsed={collapsed}>
         <div className="width100 menu-logo">
           <a className="fxmiddle flex hideit height100">
             <img
@@ -39,7 +39,7 @@ function App() {
               alt=""
             />
             {collapsed ? null : (
-              <div className="fcfff pl5 shrink0" style={{width: '100px'}}>
+              <div className="fcfff pl5 shrink0" style={{width: '110px'}}>
                 <p className="fbold fsize14">李白</p>
                 <p className="fsize11">后台管理系统模版</p>
               </div>
@@ -95,7 +95,8 @@ function App() {
           }}
         >
           {/*路由*/}
-          <RouterView></RouterView>
+          {/* <RouterView></RouterView> */}
+          {props.children}
         </Content>
       </Layout>
     </Layout>

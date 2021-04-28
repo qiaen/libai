@@ -1,13 +1,13 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, HashRouter } from "react-router-dom";
 import Report from "../views/report/index.jsx";
 import Dashboard from "../views/dashboard/index.jsx";
 export default function () {
   return (
-    <Router>
+    <HashRouter>
       <Switch>
         <Route path="/" component={Dashboard} />
         <Route path="/report" component={Report} />
       </Switch>
-    </Router>
+    </HashRouter>
   );
 }
