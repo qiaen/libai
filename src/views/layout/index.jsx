@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// 顺序要放上面！！！
 import RouterView from "../../router/index.jsx";
 import { Layout, Menu } from "antd";
 import {
@@ -13,6 +12,7 @@ import {
   MailOutlined,
 } from "@ant-design/icons";
 import menus from "./menus";
+import Tabs from './tabs'
 import "./index.scss";
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -27,19 +27,19 @@ function App(props) {
     return collapsed ? "menu-unfold" : "menu-fold";
   }
   // 点击菜单
-  function onTap(item) {}
+  function onTap(item) { }
   return (
     <Layout className="height100 layout">
       <Sider collapsedWidth="60" trigger={null} collapsible collapsed={collapsed}>
         <div className="width100 menu-logo">
           <a className="fxmiddle flex hideit height100">
             <img
-            className="pl20"
+              className="pl10"
               src="https://lanling.diumx.com/img/lan-2.af005ed3.png"
               alt=""
             />
             {collapsed ? null : (
-              <div className="fcfff pl5 shrink0" style={{width: '110px'}}>
+              <div className="fcfff pl5 shrink0" style={{ width: '110px' }}>
                 <p className="fbold fsize14">李白</p>
                 <p className="fsize11">后台管理系统模版</p>
               </div>
@@ -54,7 +54,7 @@ function App(props) {
           inlineCollapsed={collapsed}
         >
           <Menu.Item key="/" icon={<PieChartOutlined />}>
-            <a href="/" rel="noopener noreferrer">
+            <a href="/#/" rel="noopener noreferrer">
               Dashboard
             </a>
           </Menu.Item>
@@ -67,12 +67,12 @@ function App(props) {
             用户管理
           </Menu.Item>
           <Menu.Item key="report" icon={<ContainerOutlined />}>
-            <a href="/report" rel="noopener noreferrer">
+            <a href="/#/report" rel="noopener noreferrer">
               报表管理
             </a>
           </Menu.Item>
           <Menu.Item key="about" icon={<MenuFoldOutlined />}>
-            <a href="/about" rel="noopener noreferrer">
+            <a href="/#/about" rel="noopener noreferrer">
               关于
             </a>
           </Menu.Item>
@@ -85,18 +85,11 @@ function App(props) {
             {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
           </span>
         </Header>
-        <Content
-          style={{
-            margin: "15px",
-            padding: 15,
-            background: "#fff",
-            minHeight: 280,
-            overflow: "auto",
-          }}
-        >
+        <Tabs />
+        <Content className="main-content">
+          
           {/*路由*/}
-          {/* <RouterView></RouterView> */}
-          {props.children}
+          <RouterView></RouterView>
         </Content>
       </Layout>
     </Layout>

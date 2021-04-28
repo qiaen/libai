@@ -5,7 +5,7 @@ export default function () {
   return (
     <HashRouter>
       <Switch>
-        <Route path="/" component={Dashboard} />
+        <Route exact path="/" component={Dashboard} />
         <Route path="/report" component={Report} />
       </Switch>
     </HashRouter>
