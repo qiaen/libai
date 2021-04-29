@@ -17,6 +17,7 @@ import "./index.scss";
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
 function App(props) {
+    console.log(props)
   const [collapsed, setCollapsed] = useState(false);
   function toggle() {
     let a = !collapsed;
@@ -87,7 +88,6 @@ function App(props) {
         </Header>
         <Tabs />
         <Content className="main-content">
-          
           {/*路由*/}
           <RouterView></RouterView>
         </Content>
