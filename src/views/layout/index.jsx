@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import RouterView from "../../router/index.jsx";
+
 import { Layout, Menu } from "antd";
 import {
   AppstoreOutlined,
@@ -11,13 +11,16 @@ import {
   ContainerOutlined,
   MailOutlined,
 } from "@ant-design/icons";
+import { useLocation } from "react-router-dom";
 import menus from "./menus";
-import Tabs from './tabs'
+import Tabs from "./tabs";
 import "./index.scss";
+import useMenu from '../../router/useMenu'
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
 function App(props) {
-    console.log(props)
+  /**hash, pathname, search, state  */
+  const { pathname } = useLocation();
   const [collapsed, setCollapsed] = useState(false);
   function toggle() {
     let a = !collapsed;
@@ -28,10 +31,18 @@ function App(props) {
     return collapsed ? "menu-unfold" : "menu-fold";
   }
   // 点击菜单
-  function onTap(item) { }
+  function onTap(item) {}
+  const defaultOpenKeys = [pathname.includes("task") ? "/task" : undefined];
+  const [ms, setMenu] = useMenu([])
+//   console.log(ms);
   return (
     <Layout className="height100 layout">
-      <Sider collapsedWidth="60" trigger={null} collapsible collapsed={collapsed}>
+      <Sider
+        collapsedWidth="60"
+        trigger={null}
+        collapsible
+        collapsed={collapsed}
+      >
         <div className="width100 menu-logo">
           <a className="fxmiddle flex hideit height100">
             <img
@@ -40,7 +51,7 @@ function App(props) {
               alt=""
             />
             {collapsed ? null : (
-              <div className="fcfff pl5 shrink0" style={{ width: '110px' }}>
+              <div className="fcfff pl5 shrink0" style={{ width: "110px" }}>
                 <p className="fbold fsize14">李白</p>
                 <p className="fsize11">后台管理系统模版</p>
               </div>
@@ -48,35 +59,38 @@ function App(props) {
           </a>
         </div>
         <Menu
-          defaultSelectedKeys={["1"]}
-          defaultOpenKeys={["sub1"]}
+          defaultSelectedKeys={pathname}
+          selectedKeys={[pathname]}
+          defaultOpenKeys={defaultOpenKeys}
           mode="inline"
           theme="dark"
           inlineCollapsed={collapsed}
         >
-          <Menu.Item key="/" icon={<PieChartOutlined />}>
-            <a href="/#/" rel="noopener noreferrer">
-              Dashboard
-            </a>
-          </Menu.Item>
-
-          <SubMenu key="sub1" icon={<MailOutlined />} title="任务管理">
-            <Menu.Item key="5">创建任务</Menu.Item>
-            <Menu.Item key="6">任务列表</Menu.Item>
-          </SubMenu>
-          <Menu.Item key="2" icon={<DesktopOutlined />}>
-            用户管理
-          </Menu.Item>
-          <Menu.Item key="report" icon={<ContainerOutlined />}>
-            <a href="/#/report" rel="noopener noreferrer">
-              报表管理
-            </a>
-          </Menu.Item>
-          <Menu.Item key="about" icon={<MenuFoldOutlined />}>
-            <a href="/#/about" rel="noopener noreferrer">
-              关于
-            </a>
-          </Menu.Item>
+          {menus.map((item) => {
+            return item.child ? (
+              <SubMenu
+                key={item.path}
+                icon={<i className={item.icon+' ant-menu-item-icon'}></i>}
+                title={item.name}
+              >
+                {item.child.map((ch) => {
+                  return (
+                    <Menu.Item key={ch.path} icon={<i className={ch.icon}></i>}>
+                      <a href={`/#${ch.path}`} rel="noopener noreferrer">
+                        {ch.name}
+                      </a>
+                    </Menu.Item>
+                  );
+                })}
+              </SubMenu>
+            ) : (
+              <Menu.Item key={item.path} icon={<i className={item.icon}></i>}>
+                <a href={`/#${item.path}`} rel="noopener noreferrer">
+                  {item.name}
+                </a>
+              </Menu.Item>
+            );
+          })}
         </Menu>
       </Sider>
 
@@ -89,7 +103,8 @@ function App(props) {
         <Tabs />
         <Content className="main-content">
           {/*路由*/}
-          <RouterView></RouterView>
+          {/* <RouterView></RouterView> */}
+          {props.children}
         </Content>
       </Layout>
     </Layout>

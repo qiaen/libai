@@ -1,8 +1,6 @@
-import Layout from './views/layout/index.jsx'
+import RouterView from "./router/index.jsx";
 function App() {
-  return (
-    <Layout />
-  );
+  return <RouterView />
 }
 
 export default App;
