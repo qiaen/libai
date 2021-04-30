@@ -1,21 +1,29 @@
-import { BrowserRouter as Router, Switch, Route, HashRouter } from "react-router-dom";
-import Report from "../views/report/index.jsx";
-import Dashboard from "../views/dashboard/index.jsx";
+import { lazy, Suspense } from "react";
+import { Spin } from "antd";
+import { Switch, Route, HashRouter } from "react-router-dom";
 import Layout from "../views/layout/index.jsx";
+const Report = lazy(() => import("../views/report/index"));
+const Dashboard = lazy(() => import("../views/dashboard/index"));
+const Datasource = lazy(() => import("../views/data-source/index"));
+const Task = lazy(() => import("../views/task/index"));
+const Checkin = lazy(() => import("../views/task/checkin"));
+const Daily = lazy(() => import("../views/daily/index"));
 export default function () {
   return (
     <HashRouter>
       <Layout>
-        <Switch>
-          <Route exact path="/" state={{
-              icon:'1111',
-              name:'Dashboard'
-          }} component={Dashboard} />
-          <Route path="/report" state={{
-              icon:'22222',
-              name:'报表管理'
-          }} component={Report} />
-        </Switch>
+        <Suspense
+          fallback={<Spin className="width100 height100 center" size="large" />}
+        >
+          <Switch>
+            <Route exact path="/" component={Dashboard} />
+            <Route path="/report" component={Report} />
+            <Route path="/datasource" component={Datasource} />
+            <Route exact path="/task" component={Task} />
+            <Route path="/task/checkin" component={Checkin} />
+            <Route path="/daily" component={Daily} />
+          </Switch>
+        </Suspense>
       </Layout>
     </HashRouter>
   );
