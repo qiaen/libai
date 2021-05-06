@@ -1,0 +1,31 @@
+@import "../../assets/css/var.scss";
+.tm-drawer {
+  top: -50px;
+  left: -14px;
+  z-index: 100;
+  bottom: -10px;
+  right: -15px;
+  background: #f1f5f9 url(http://mulan.diumx.com/assets/main-bg.aae8d659.png)
+    no-repeat bottom right;
+  // animation: rightIn 0.36s forwards;
+  transform: translate3d(100%, 0, 0);
+  transition: 0.36s;
+  &.show-drawer {
+    transform: translate3d(0, 0, 0);
+  }
+  .drawer-header {
+    height: 40px;
+  }
+  .drawer-title {
+    border-left: 1px solid $grey;
+    height: 16px;
+    color: $green;
+  }
+  .drawer-content {
+    margin: 12px 15px 15px;
+    overflow: auto;
+  }
+  .ant-btn > .anticon + span {
+    margin-left: 2px;
+  }
+}

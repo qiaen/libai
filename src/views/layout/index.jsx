@@ -101,7 +101,7 @@ function App(props) {
           </span>
         </Header>
         <Tabs />
-        <Content className="main-content">
+        <Content className="main-content relative">
           {/*路由*/}
           {/* <RouterView></RouterView> */}
           {props.children}
