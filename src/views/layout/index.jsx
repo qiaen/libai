@@ -42,6 +42,7 @@ function App(props) {
         trigger={null}
         collapsible
         collapsed={collapsed}
+        className="menu"
       >
         <div className="width100 menu-logo">
           <a className="fxmiddle flex hideit height100">

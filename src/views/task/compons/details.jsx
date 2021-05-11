@@ -86,6 +86,14 @@ export default function (props) {
           </Button>
         </Form.Item>
       </Form>
+      <pre>
+      flex: auto;
+      相当于
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: auto;
+      设置width/height: 0; 防止被撑开
+      </pre>
     </div>
   );
 }

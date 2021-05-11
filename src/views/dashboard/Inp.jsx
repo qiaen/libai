@@ -11,8 +11,8 @@ function Inp({ cRef = null }) {
     }
   }))
   return (
-    <section className="pt10" style={{"width": "180px"}}>
-      <Input value={value} onChange={onChange} placeholder="輸入後獲取"></Input>
+    <section style={{"width": "180px"}}>
+      <Input value={value} onChange={onChange} placeholder="輸入后点击按钮获取" allowClear></Input>
     </section>
   );
 }
