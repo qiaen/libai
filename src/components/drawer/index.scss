@@ -5,8 +5,7 @@
   z-index: 100;
   bottom: -10px;
   right: -15px;
-  background: #f1f5f9 url(http://mulan.diumx.com/assets/main-bg.aae8d659.png)
-    no-repeat bottom right;
+  background: $main-bg;
   // animation: rightIn 0.36s forwards;
   transform: translate3d(100%, 0, 0);
   transition: 0.36s;

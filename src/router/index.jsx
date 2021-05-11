@@ -9,6 +9,9 @@ const Task = lazy(() => import("../views/task/index"));
 const Checkin = lazy(() => import("../views/task/checkin"));
 const Daily = lazy(() => import("../views/daily/index"));
 export default function () {
+  function onEnter() {
+    console.log(1111)
+  }
   return (
     <HashRouter>
       <Layout>
@@ -21,7 +24,7 @@ export default function () {
             <Route path="/datasource" component={Datasource} />
             <Route exact path="/task" component={Task} />
             <Route path="/task/checkin" component={Checkin} />
-            <Route path="/daily" component={Daily} />
+            <Route path="/daily" onEnter={onEnter} component={Daily} />
           </Switch>
         </Suspense>
       </Layout>
