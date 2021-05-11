@@ -1,5 +1,6 @@
 .zm-table {
   height: 100%;
+  flex: auto;
   .ant-spin-nested-loading,
   .ant-spin-container {
     height: 100%;
@@ -15,9 +16,8 @@
         height: 100%;
         overflow: auto;
         .ant-table-body {
-          // height: 100%;
-          overflow: hidden;
           max-height: calc(100% - 43px) !important;
+          height: 100%;
         }
         td {
           padding-top: 10px;

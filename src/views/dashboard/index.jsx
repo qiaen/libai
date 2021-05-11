@@ -11,7 +11,7 @@ export default function () {
     setVal(inpRef.current.getValue());
   }
   return (
-    <section className="scroll-y">
+    <section className="scroll-y height100">
       <div style={{ height: "1000px" }}>
         Dashboard
         <div className="flex pt10">
