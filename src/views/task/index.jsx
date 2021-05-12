@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button, Badge, Form, Input, Select } from "antd";
-import { SearchOutlined } from '@ant-design/icons';
-import './index.scss'
+import { SearchOutlined } from "@ant-design/icons";
+import Page from './page'
+import "./index.scss";
 const columns = [
   {
     title: "Name",
     dataIndex: "name",
-    width: "170px"
+    width: "170px",
   },
   {
     title: "Age",
     dataIndex: "age",
-    width: "70px"
+    width: "70px",
   },
   {
     title: "Address",
@@ -26,35 +27,41 @@ const columns = [
         <Badge status="success" />
         {text}
       </span>
-    )
+    ),
   },
   {
     title: "Set",
     dataIndex: "set",
     width: "120px",
     render: () => (
-      <Button type="primary" size="small">Publish</Button>
-    )
-  }
+      <Button type="primary" size="small">
+        Publish
+      </Button>
+    ),
+  },
 ];
 
 export default function () {
   const [loading, setLoading] = useState(false);
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-  const [form] = Form.useForm()
-  const [data, setData] = useState([])
-  const [pageSize, setPageSize] = useState(20)
-  const [page, setPage] = useState(1)
-  const pagination = {
-    current: page,
-    pageSize,
-    onChange: page => {
-      setPage(page)
-    },
-    onShowSizeChange: (page, sizes) => {
-      setPageSize(sizes)
-    }
-  }
+  const [form] = Form.useForm();
+  const [data, setData] = useState([]);
+  const pagination = Page()
+  const {page, pageSize, setPage} = pagination
+  /** 分页相关 开始 */
+  // const [pageSize, setPageSize] = useState(20);
+  // const [page, setPage] = useState(1);
+  // const pagination = {
+  //   current: page,
+  //   pageSize,
+  //   onChange: (page) => {
+  //     setPage(page);
+  //   },
+  //   onShowSizeChange: (page, sizes) => {
+  //     setPageSize(sizes);
+  //   },
+  // };
+  /** 分页相关 结束 */
   /** 选中项和方法 */
   const rowSelection = {
     selectedRowKeys,
@@ -64,34 +71,33 @@ export default function () {
   };
   /** 加载数据，初始化 */
   function init() {
-    setPage(1)
+    page === 1 ? get() : setPage(1);
   }
   /** 制造数据 */
   function get() {
-    setLoading(true)
+    setLoading(true);
     const data = [];
     const p = {
       page,
-      ...form.getFieldsValue()
-    }
+      ...form.getFieldsValue(),
+    };
     for (let i = 0; i < 66; i++) {
       data.push({
         key: i,
         name: p.name ? `Cissy ${p.name}` : `Edward King ${i}`,
         age: parseInt(100 * Math.random()),
-        status: p.status || 'all',
+        status: p.status || "all",
         address: `London, Park Lane no. ${i}`,
       });
     }
-    console.log(p)
     setTimeout(() => {
-      setLoading(false)
-      setData(data)
-    }, 300)
+      setLoading(false);
+      setData(data);
+    }, 300);
   }
   useEffect(() => {
-    get()
-  }, [page, pageSize])
+    get();
+  }, [page, pageSize]);
   return (
     <section className="task height100 flex-view">
       <Form
@@ -100,7 +106,7 @@ export default function () {
         layout="inline"
         onFinish={init}
         initialValues={{
-          name: '',
+          name: "",
           status: "",
         }}
       >
@@ -115,12 +121,25 @@ export default function () {
           </Select>
         </Form.Item>
         <Form.Item>
-          <Button loading={loading} icon={<SearchOutlined />} type="primary" htmlType="submit">
+          <Button
+            loading={loading}
+            icon={<SearchOutlined />}
+            type="primary"
+            htmlType="submit"
+          >
             Submit
-        </Button>
+          </Button>
         </Form.Item>
       </Form>
-      <Table className="zm-table" loading={loading} scroll={{ x: 760, y: 0 }} pagination={pagination} rowSelection={rowSelection} columns={columns} dataSource={data} />
+      <Table
+        className="zm-table"
+        loading={loading}
+        scroll={{ x: 760, y: 0 }}
+        pagination={pagination}
+        rowSelection={rowSelection}
+        columns={columns}
+        dataSource={data}
+      />
     </section>
   );
 }
