@@ -113,6 +113,7 @@ export default function () {
         loading={loading}
         scroll={{ x: 760, y: 0 }}
         pagination={begin.pagination}
+        rowKey="id"
         rowSelection={rowSelection}
         columns={columns}
         dataSource={data}
