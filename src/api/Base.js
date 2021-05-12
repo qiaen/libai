@@ -1,0 +1,5 @@
+import Http from '@utils/Http'
+// 获取用户信息
+export const getUserInfo = (params) => Http.setPromise(`GET`, `/api/getUserInfo`, params)
+// 获取所有枚举接口
+export const getAllEnum = (params) => Http.setPromise(`GET`, `/api/getAllEnum`, params)

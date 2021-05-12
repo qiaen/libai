@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button, Badge, Form, Input, Select } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
-import Page from './page'
+import useInit from "@utils/useInit";
 import "./index.scss";
+import * as Task from "@api/Task";
 const columns = [
   {
-    title: "Name",
-    dataIndex: "name",
-    width: "170px",
-  },
-  {
-    title: "Age",
-    dataIndex: "age",
+    title: "ID",
+    dataIndex: "id",
     width: "70px",
   },
   {
-    title: "Address",
-    dataIndex: "address",
+    title: "Name",
+    dataIndex: "jobName",
+    width: "170px",
+    ellipsis: true,
+    render: (text) => <a>{text}</a>,
+  },
+  {
+    title: "updateTime",
+    dataIndex: "updateTime",
   },
   {
     title: "Status",
@@ -40,64 +43,38 @@ const columns = [
     ),
   },
 ];
-
 export default function () {
-  const [loading, setLoading] = useState(false);
-  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [form] = Form.useForm();
-  const [data, setData] = useState([]);
-  const pagination = Page()
-  const {page, pageSize, setPage} = pagination
-  /** 分页相关 开始 */
-  // const [pageSize, setPageSize] = useState(20);
-  // const [page, setPage] = useState(1);
-  // const pagination = {
-  //   current: page,
-  //   pageSize,
-  //   onChange: (page) => {
-  //     setPage(page);
-  //   },
-  //   onShowSizeChange: (page, sizes) => {
-  //     setPageSize(sizes);
-  //   },
-  // };
-  /** 分页相关 结束 */
-  /** 选中项和方法 */
-  const rowSelection = {
-    selectedRowKeys,
-    onChange: (selectedRowKeys) => {
-      setSelectedRowKeys(selectedRowKeys);
-    },
-  };
-  /** 加载数据，初始化 */
-  function init() {
-    page === 1 ? get() : setPage(1);
-  }
+  /** Page配置信息, 包含主数据data，多选list */
+  const begin = useInit(get);
+  const {
+    init,
+    page,
+    setTotal,
+    data,
+    setData,
+    loading,
+    setLoading,
+    rowSelection
+  } = begin;
+  
   /** 制造数据 */
-  function get() {
+  async function get() {
+    rowSelection.setSelectedRowKeys([]);
     setLoading(true);
-    const data = [];
     const p = {
-      page,
+      pageNo: page,
       ...form.getFieldsValue(),
     };
-    for (let i = 0; i < 66; i++) {
-      data.push({
-        key: i,
-        name: p.name ? `Cissy ${p.name}` : `Edward King ${i}`,
-        age: parseInt(100 * Math.random()),
-        status: p.status || "all",
-        address: `London, Park Lane no. ${i}`,
-      });
-    }
-    setTimeout(() => {
-      setLoading(false);
-      setData(data);
-    }, 300);
+    await Task.getList(p)
+      .then((res) => {
+        setData(res.data);
+        setTotal(res.total);
+      })
+      .catch((err) => {});
+    setLoading(false);
   }
-  useEffect(() => {
-    get();
-  }, [page, pageSize]);
+
   return (
     <section className="task height100 flex-view">
       <Form
@@ -135,7 +112,7 @@ export default function () {
         className="zm-table"
         loading={loading}
         scroll={{ x: 760, y: 0 }}
-        pagination={pagination}
+        pagination={begin.pagination}
         rowSelection={rowSelection}
         columns={columns}
         dataSource={data}

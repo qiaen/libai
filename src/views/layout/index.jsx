@@ -1,40 +1,27 @@
 import React, { useState } from "react";
 
 import { Layout, Menu } from "antd";
-import {
-  AppstoreOutlined,
-  SettingFilled,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  PieChartOutlined,
-  DesktopOutlined,
-  ContainerOutlined,
-  MailOutlined,
-} from "@ant-design/icons";
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { useLocation } from "react-router-dom";
 import menus from "./menus";
 import Tabs from "./tabs";
 import "./index.scss";
-import useMenu from '../../router/useMenu'
+import useMenu from "../../router/useMenu";
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
 function App(props) {
   /**hash, pathname, search, state  */
   const { pathname } = useLocation();
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(
+    localStorage.liBaiCollapsed === "true" ? true : false
+  );
   function toggle() {
     let a = !collapsed;
     setCollapsed(a);
+    localStorage.liBaiCollapsed = a;
   }
-  /**控制菜单折叠*/
-  function isCollapsed() {
-    return collapsed ? "menu-unfold" : "menu-fold";
-  }
-  // 点击菜单
-  function onTap(item) {}
   const defaultOpenKeys = [pathname.includes("task") ? "/task" : undefined];
-  const [ms, setMenu] = useMenu([])
-//   console.log(ms);
+  const [ms, setMenu] = useMenu([]);
   return (
     <Layout className="height100 layout">
       <Sider
@@ -71,7 +58,7 @@ function App(props) {
             return item.child ? (
               <SubMenu
                 key={item.path}
-                icon={<i className={item.icon+' ant-menu-item-icon'}></i>}
+                icon={<i className={item.icon + " ant-menu-item-icon"}></i>}
                 title={item.name}
               >
                 {item.child.map((ch) => {
