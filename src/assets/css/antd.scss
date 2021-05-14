@@ -10,3 +10,7 @@
 .ant-layout{
     background: $main-bg;
 }
+// 表格内文字超出省略样式悬浮显示
+.ant-table-cell-ellipsis:hover{
+    white-space: normal;
+}
