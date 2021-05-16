@@ -10,7 +10,7 @@ const Checkin = lazy(() => import("../views/task/checkin"));
 const Daily = lazy(() => import("../views/daily/index"));
 export default function () {
   function onEnter() {
-    console.log(1111)
+    console.log('router enter')
   }
   return (
     <HashRouter>

@@ -10,7 +10,13 @@
 .ant-layout{
     background: $main-bg;
 }
+@keyframes delayShow {
+    0% {}
+    100% {
+        white-space: normal;
+    }
+}
 // 表格内文字超出省略样式悬浮显示
 .ant-table-cell-ellipsis:hover{
-    white-space: normal;
+   animation: 1.2s delayShow;
 }
