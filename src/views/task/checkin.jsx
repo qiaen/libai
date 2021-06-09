@@ -19,8 +19,8 @@ export default function () {
   }
   /** 从详情页返回 */
   function detailBack(val) {
-    message.success('保存成功！')
-    setVisible(false)
+    message.success("保存成功！");
+    setVisible(false);
   }
   return (
     <section className="scroll-y">
