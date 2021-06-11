@@ -1,36 +1,27 @@
 @import "./var.scss";
 /*color*/
 .grdcolor {
-	background: -webkit-linear-gradient(0deg, #ff9c58, #fe707e);
+  background: -webkit-linear-gradient(0deg, #ff9c58, #fe707e);
 }
 .bgfff {
-	background-color: #fff!important;
+  background-color: #fff !important;
 }
 .bgmain {
-	background-color: #f1f5f9;
+  background-color: #f1f5f9;
 }
 // 采用的颜色以及对应的色值
-$stars: (
-  (size: 40px, left: 22px, top: 97px),
-  (size: 32px, left: 42px, top: 70px),
-  (size: 31px, left: 464px, top: 273px),
-  (size: 28px, left: 240px, top: 402px),
-  (size: 25px, left: 289px, top: 557px)
-);
-
 $colors: (
-    (key: 'fff', val: $white),
-    (key: 'blue', val: $blue),
-    (key: 'org', val: $org),
-    (key: 'grey', val: $grey),
-    (key: 'dgrey', val: $dgrey),
-    (key: 'dark', val: $dark),
-    (key: 'red', val: $red),
-    (key: 'green', val: $green)
+  fff: $white,
+  blue: $blue,
+  org: $org,
+  grey: $grey,
+  dgrey: $dgrey,
+  dark: $dark,
+  red: $red,
+  green: $green,
 );
-@for $i from 1 through length($colors) {
-    $item: nth($colors, $i);
-	.fc#{map-get($item, key)} {
-        color: map-get($item, val);
-	}
+@each $key, $color in $colors {
+  .fc#{$key} {
+    color: #{$color};
+  }
 }

@@ -1,41 +1,11 @@
-/*font-size*/
+/* font-size */
 .fbold {
-    font-weight: bold;
+  font-weight: bold;
+}
+/** 生成形如 .fsize10 { font-size: 10px } */
+$sizes: (10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 22, 24);
+@each $size in $sizes {
+  .fsize#{$size} {
+    font-size: #{$size}px;
   }
-  .fsize10 {
-    font-size: 10px;
-  }
-  .fsize11 {
-    font-size: 11px;
-  }
-  .fsize12 {
-    font-size: 12px;
-  }
-  .fsize13 {
-    font-size: 13px;
-  }
-  .fsize14 {
-    font-size: 14px;
-  }
-  .fsize15 {
-    font-size: 15px;
-  }
-  .fsize16 {
-    font-size: 16px;
-  }
-  .fsize17 {
-    font-size: 17px;
-  }
-  .fsize18 {
-    font-size: 18px;
-  }
-  .fsize20 {
-    font-size: 20px;
-  }
-  .fsize22 {
-    font-size: 22px;
-  }
-  .fsize24 {
-    font-size: 24px;
-  }
-  
+}
