@@ -1,19 +1,18 @@
 $spacesList: (
-  mt: "margin-top",
-  mr: "margin-right",
-  mb: "margin-bottom",
-  ml: "margin-left",
-  pt: "padding-top",
-  pr: "padding-right",
-  pb: "padding-bottom",
-  pl: "padding-left",
+	mt: 'margin-top',
+	mr: 'margin-right',
+	mb: 'margin-bottom',
+	ml: 'margin-left',
+	pt: 'padding-top',
+	pr: 'padding-right',
+	pb: 'padding-bottom',
+	pl: 'padding-left'
 );
 $numbers: (5, 10, 12, 15, 20);
 @each $key, $type in $spacesList {
-  @each $num in $numbers {
-    .#{$key}#{$num} {
-      #{$type}: #{$num}px;
-    }
-  }
+	@each $num in $numbers {
+		.#{$key}#{$num} {
+			#{$type}: #{$num}px;
+		}
+	}
 }
-

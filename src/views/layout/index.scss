@@ -1,65 +1,65 @@
 .layout {
-  .menu {
-    background: #21325e;
-    .ant-menu.ant-menu-dark{
-      background: none;
-    }
-    .ant-menu-sub {
-      background: #293d71;
-    }
-  }
-  .main-content {
-    margin: 0px 15px 15px;
-    padding: 15px;
-    background: #fff;
-    min-height: 280px;
-    // overflow: auto;
-  }
-  .tabs {
-    .anticon {
-      margin-right: 6px;
-    }
-    .ant-tabs-tab {
-      padding: 3px 10px !important;
-      &:not(.ant-tabs-tab-active) {
-        .ant-tabs-tab-remove {
-          display: none;
-        }
-      }
-      &:hover {
-        .ant-tabs-tab-remove {
-          display: block;
-        }
-      }
-    }
-    .iconfont {
-      font-size: 14px;
-      padding-right: 6px;
-    }
-    .ant-tabs-nav {
-      margin-bottom: 0px;
-      padding-bottom: 10px;
-    }
-    .ant-tabs-nav-add {
-      display: none;
-    }
-    .ant-tabs-nav-more {
-      padding: 4px 12px !important;
-    }
-  }
-  .ant-layout-header {
-    height: 50px;
-    border-bottom: 1px solid #dedede;
-    padding: 0 15px;
-  }
-  .menu-logo {
-    height: 50px;
-    background: #293d71;
-    img {
-      height: 38px;
-    }
-  }
-  .ant-menu-inline-collapsed {
-    width: 60px;
-  }
+	.menu {
+		background: #21325e;
+		.ant-menu.ant-menu-dark {
+			background: none;
+		}
+		.ant-menu-sub {
+			background: #293d71;
+		}
+	}
+	.main-content {
+		margin: 0px 15px 15px;
+		padding: 15px;
+		background: #fff;
+		min-height: 280px;
+		// overflow: auto;
+	}
+	.tabs {
+		.anticon {
+			margin-right: 6px;
+		}
+		.ant-tabs-tab {
+			padding: 3px 10px !important;
+			&:not(.ant-tabs-tab-active) {
+				.ant-tabs-tab-remove {
+					display: none;
+				}
+			}
+			&:hover {
+				.ant-tabs-tab-remove {
+					display: block;
+				}
+			}
+		}
+		.iconfont {
+			font-size: 14px;
+			padding-right: 6px;
+		}
+		.ant-tabs-nav {
+			margin-bottom: 0px;
+			padding-bottom: 10px;
+		}
+		.ant-tabs-nav-add {
+			display: none;
+		}
+		.ant-tabs-nav-more {
+			padding: 4px 12px !important;
+		}
+	}
+	.ant-layout-header {
+		height: 50px;
+		border-bottom: 1px solid #dedede;
+		padding: 0 15px;
+	}
+	.menu-logo {
+		height: 50px;
+		background: #293d71;
+		img {
+			height: 38px;
+		}
+	}
+	.ant-menu-inline-collapsed {
+		width: 60px;
+	}
 }

@@ -1,45 +1,45 @@
 .zm-table {
-  height: 100%;
-  flex: auto;
-  .ant-spin-nested-loading,
-  .ant-spin-container {
-    height: 100%;
-  }
-  .ant-spin-container {
-    display: flex;
-    flex-direction: column;
-    // height: 100%;
-    .ant-table {
-      flex: auto;
-      height: 0;
-      .ant-table-container {
-        height: 100%;
-        overflow: auto;
-        .ant-table-body {
-          max-height: calc(100% - 43px) !important;
-          height: 100%;
-        }
-        td {
-          padding-top: 10px;
-          padding-bottom: 10px;
-          font-size: 13px;
-          a {
-            color: #2c5cc5;
-          }
-        }
-      }
-      // 表头
-      .ant-table-header {
-        // height: 40px;
-        tr > th {
-          padding-top: 10px;
-          padding-bottom: 10px;
-          white-space: nowrap;
-        }
-      }
-    }
-    .ant-table-pagination {
-      margin-bottom: 0px;
-    }
-  }
+	height: 100%;
+	flex: auto;
+	.ant-spin-nested-loading,
+	.ant-spin-container {
+		height: 100%;
+	}
+	.ant-spin-container {
+		display: flex;
+		flex-direction: column;
+		// height: 100%;
+		.ant-table {
+			flex: auto;
+			height: 0;
+			.ant-table-container {
+				height: 100%;
+				overflow: auto;
+				.ant-table-body {
+					max-height: calc(100% - 43px) !important;
+					height: 100%;
+				}
+				td {
+					padding-top: 10px;
+					padding-bottom: 10px;
+					font-size: 13px;
+					a {
+						color: #2c5cc5;
+					}
+				}
+			}
+			// 表头
+			.ant-table-header {
+				// height: 40px;
+				tr > th {
+					padding-top: 10px;
+					padding-bottom: 10px;
+					white-space: nowrap;
+				}
+			}
+		}
+		.ant-table-pagination {
+			margin-bottom: 0px;
+		}
+	}
 }

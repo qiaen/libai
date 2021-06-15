@@ -1,22 +1,23 @@
-@import "./var.scss";
+@import './var.scss';
 .ant-menu-inline .ant-menu-item {
-    margin-top: 0px;
+	margin-top: 0px;
 }
 // 懒路由加载
 .loading-route {
-    width: 100%;
-    height: 200px;
+	width: 100%;
+	height: 200px;
 }
-.ant-layout{
-    background: $main-bg;
+.ant-layout {
+	background: $main-bg;
 }
 @keyframes delayShow {
-    0% {}
-    100% {
-        white-space: normal;
-    }
+	0% {
+	}
+	100% {
+		white-space: normal;
+	}
 }
 // 表格内文字超出省略样式悬浮显示
-.ant-table-cell-ellipsis:hover{
-   animation: 1.2s delayShow;
+.ant-table-cell-ellipsis:hover {
+	animation: 1.2s delayShow;
 }

@@ -1,27 +1,27 @@
-@import "./var.scss";
+@import './var.scss';
 /*color*/
 .grdcolor {
-  background: -webkit-linear-gradient(0deg, #ff9c58, #fe707e);
+	background: -webkit-linear-gradient(0deg, #ff9c58, #fe707e);
 }
 .bgfff {
-  background-color: #fff !important;
+	background-color: #fff !important;
 }
 .bgmain {
-  background-color: #f1f5f9;
+	background-color: #f1f5f9;
 }
 // 采用的颜色以及对应的色值
 $colors: (
-  fff: $white,
-  blue: $blue,
-  org: $org,
-  grey: $grey,
-  dgrey: $dgrey,
-  dark: $dark,
-  red: $red,
-  green: $green,
+	fff: $white,
+	blue: $blue,
+	org: $org,
+	grey: $grey,
+	dgrey: $dgrey,
+	dark: $dark,
+	red: $red,
+	green: $green
 );
 @each $key, $color in $colors {
-  .fc#{$key} {
-    color: #{$color};
-  }
+	.fc#{$key} {
+		color: #{$color};
+	}
 }

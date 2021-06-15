@@ -1,23 +1,22 @@
-import { useState } from "react";
-import menus from "./menus";
+import menus from './menus'
 export default function () {
 	function getMenu(pathname) {
-		let c = undefined;
+		let c = undefined
 		for (let item of menus) {
 			if (item.child) {
-				getMenu(item.child);
+				getMenu(item.child)
 			} else {
 				if (item.path === pathname) {
 					c = {
 						...item,
-						pathname: item.path,
-					};
-					break;
+						pathname: item.path
+					}
+					break
 				}
 			}
 		}
-		return c;
+		return c
 	}
 
-	return [menus, getMenu];
+	return [menus, getMenu]
 }

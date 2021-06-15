@@ -1,6 +1,6 @@
-import RouterView from "./router/index.jsx";
+import RouterView from './router/index.jsx'
 function App() {
-  return <RouterView />
+	return <RouterView />
 }
 
-export default App;
+export default App
