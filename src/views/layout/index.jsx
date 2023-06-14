@@ -25,7 +25,7 @@ function App(props) {
 			<Sider collapsedWidth="60" trigger={null} collapsible collapsed={collapsed} className="menu">
 				<div className="width100 menu-logo">
 					<a className="fxmiddle flex hideit height100">
-						<img className="pl10" src="https://lanling.diumx.com/img/lan-2.af005ed3.png" alt="" />
+						<img className="pl10" src="https://lanling.diumx.com/assets/img/lan-2.af005ed3.png" alt="" />
 						{collapsed ? null : (
 							<div className="fcfff pl5 shrink0" style={{ width: '110px' }}>
 								<p className="fbold fsize14">李白</p>
